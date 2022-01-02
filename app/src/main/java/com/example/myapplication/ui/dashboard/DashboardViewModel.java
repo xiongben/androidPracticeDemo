@@ -7,10 +7,12 @@ import androidx.lifecycle.ViewModel;
 public class DashboardViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
+    private int num = 10;
 
     public DashboardViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is dashboard fragment");
+        mText.setValue("This is dashboard fragment，555");
+
     }
 
     public LiveData<String> getText() {
