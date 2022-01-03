@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import com.example.myapplication.ui.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -23,7 +24,10 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btnStartBAty).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, Bty.class));
+                Intent i = new Intent(MainActivity.this, Bty.class);
+//                i.putExtra("data","hello,this is params data");
+                i.putExtra("user", new User("xiaoming",12));
+                startActivity(i);
             }
         });
 
