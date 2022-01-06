@@ -39,12 +39,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        //显示和隐式intent
         findViewById(R.id.buttonStartMyAty).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, MyAty.class));
-
+//                startActivity(new Intent(MainActivity.this, MyAty.class));
+                startActivity(new Intent("com.example.myapplication.intent.action.MyAty"));
             }
         });
 

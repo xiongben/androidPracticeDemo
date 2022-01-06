@@ -22,7 +22,12 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".MyAty"/>
+        <activity android:name=".MyAty" android:exported="true">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="com.example.myapplication.intent.action.MyAty"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
