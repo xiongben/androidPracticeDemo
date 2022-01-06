@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
 
         textView = findViewById(R.id.textView1);
 
+        textView.setText(String.format("taskId:%d,current activity id:%s",getTaskId(),toString()));
+
         findViewById(R.id.btnStartBAty).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -34,6 +36,15 @@ public class MainActivity extends AppCompatActivity {
                 i.putExtra("user", new User("xiaoming",12));
 //                startActivity(i);
                 startActivityForResult(i,0);
+            }
+        });
+
+
+        findViewById(R.id.buttonStartMyAty).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, MyAty.class));
+
             }
         });
 

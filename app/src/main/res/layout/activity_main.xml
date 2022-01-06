@@ -10,5 +10,9 @@
 
    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="hello xiongben" android:id="@+id/textView1"/>
     <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="to other activity" android:id="@+id/btnStartBAty"/>
+    <Button
+            android:text="start myAty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/buttonStartMyAty"/>
 
 </LinearLayout>
