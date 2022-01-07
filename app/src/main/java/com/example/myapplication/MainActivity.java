@@ -55,6 +55,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+//        //获取全局application
+//        getApplicationContext();
+
 
 //        binding = ActivityMainBinding.inflate(getLayoutInflater());
 //        setContentView(binding.getRoot());

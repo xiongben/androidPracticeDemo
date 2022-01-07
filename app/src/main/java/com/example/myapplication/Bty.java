@@ -12,12 +12,15 @@ public class Bty extends AppCompatActivity {
     private TextView tv;
     private EditText editText;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bty);
 
         editText = findViewById(R.id.editText);
+
+
 
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
