@@ -14,5 +14,13 @@
             android:text="start myAty"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/buttonStartMyAty"/>
+    <Button
+            android:text="启动服务"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/buttonStartServers"/>
+    <Button
+            android:text="停止服务"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/buttonStopServers"/>
 
 </LinearLayout>

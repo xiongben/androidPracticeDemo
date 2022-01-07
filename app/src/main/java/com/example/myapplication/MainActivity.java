@@ -55,6 +55,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //server启动
+        findViewById(R.id.buttonStartServers).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startService(new Intent(MainActivity.this, MyService.class));
+            }
+        });
+
+        findViewById(R.id.buttonStopServers).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                stopService(new Intent(MainActivity.this, MyService.class));
+            }
+        });
+
 //        //获取全局application
 //        getApplicationContext();
 

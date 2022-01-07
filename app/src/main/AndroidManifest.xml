@@ -10,6 +10,12 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.MyApplication">
+        <service
+                android:name=".MyService"
+                android:enabled="true"
+                android:exported="true">
+        </service>
+
         <activity
                 android:name=".Bty"
                 android:exported="true"/>
@@ -29,10 +35,13 @@
             <intent-filter>
                 <category android:name="android.intent.category.BROWSABLE"/>
                 <category android:name="android.intent.category.DEFAULT"/>
+
                 <action android:name="com.example.myapplication.intent.action.MyAty"/>
             </intent-filter>
         </activity>
-        <activity android:name=".ActivityC" android:exported="true">
+        <activity
+                android:name=".ActivityC"
+                android:exported="true">
             <intent-filter>
                 <category android:name="android.intent.category.BROWSABLE"/>
                 <category android:name="android.intent.category.DEFAULT"/>
