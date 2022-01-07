@@ -22,10 +22,23 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".MyAty" android:exported="true">
+        <activity
+                android:name=".MyAty"
+                android:exported="true">
             <intent-filter>
+                <category android:name="android.intent.category.BROWSABLE"/>
                 <category android:name="android.intent.category.DEFAULT"/>
                 <action android:name="com.example.myapplication.intent.action.MyAty"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".ActivityC" android:exported="true">
+            <intent-filter>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+
+                <action android:name="android.intent.action.VIEW"/>
+
+                <data android:scheme="app"/>
             </intent-filter>
         </activity>
     </application>
