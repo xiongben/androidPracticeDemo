@@ -1,9 +1,9 @@
 package com.example.myapplication;
 
-import android.content.ActivityNotFoundException;
-import android.content.Intent;
+import android.content.*;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.view.View;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
@@ -20,6 +20,18 @@ public class MainActivity extends AppCompatActivity {
 
 //    private ActivityMainBinding binding;
     private TextView textView;
+
+    private ServiceConnection conn = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            System.out.println("service connected =====");
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            System.out.println("service no connected =====");
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +81,22 @@ public class MainActivity extends AppCompatActivity {
                 stopService(new Intent(MainActivity.this, MyService.class));
             }
         });
+
+        findViewById(R.id.buttonBindServers).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bindService(new Intent(MainActivity.this, MyService.class), conn, Context.BIND_AUTO_CREATE);
+            }
+        });
+
+        findViewById(R.id.buttonUnbindServers).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               unbindService(conn);
+            }
+        });
+
+
 
 //        //获取全局application
 //        getApplicationContext();
@@ -129,5 +157,7 @@ public class MainActivity extends AppCompatActivity {
         super.onRestart();
         System.out.println("main onRestart");
     }
+
+
 
 }

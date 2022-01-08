@@ -22,5 +22,13 @@
             android:text="停止服务"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/buttonStopServers"/>
+    <Button
+            android:text="绑定服务"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/buttonBindServers"/>
+    <Button
+            android:text="解绑服务"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/buttonUnbindServers"/>
 
 </LinearLayout>
