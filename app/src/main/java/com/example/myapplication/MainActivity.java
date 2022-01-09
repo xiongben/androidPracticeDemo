@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
 import com.example.myapplication.ui.User;
@@ -14,12 +15,13 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import com.example.myapplication.databinding.ActivityMainBinding;
+
 
 public class MainActivity extends AppCompatActivity {
 
 //    private ActivityMainBinding binding;
     private TextView textView;
+    private EditText etData;
 
     private ServiceConnection conn = new ServiceConnection() {
         @Override
@@ -39,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         textView = findViewById(R.id.textView1);
+
+        etData = findViewById(R.id.etData);
 
         textView.setText(String.format("taskId:%d,current activity id:%s",getTaskId(),toString()));
 
@@ -71,7 +75,9 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.buttonStartServers).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startService(new Intent(MainActivity.this, MyService.class));
+                Intent i = new Intent(MainActivity.this, MyService.class);
+                i.putExtra("data", etData.getText().toString());
+                startService(i);
             }
         });
 
@@ -85,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.buttonBindServers).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 bindService(new Intent(MainActivity.this, MyService.class), conn, Context.BIND_AUTO_CREATE);
             }
         });
