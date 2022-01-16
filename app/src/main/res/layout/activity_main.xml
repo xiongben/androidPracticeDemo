@@ -23,6 +23,7 @@
             android:text="停止服务"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/buttonStopServers"/>
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="something you know" android:id="@+id/tvOut"/>
     <Button
             android:text="绑定服务"
             android:layout_width="match_parent"
@@ -31,5 +32,9 @@
             android:text="解绑服务"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/buttonUnbindServers"/>
+ <Button
+         android:text="服务传递数据测试"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content" android:id="@+id/buttonSyncData"/>
 
 </LinearLayout>

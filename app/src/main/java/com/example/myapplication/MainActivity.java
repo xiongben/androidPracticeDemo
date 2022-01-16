@@ -1,12 +1,13 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
 import android.content.*;
 import android.net.Uri;
-import android.os.Bundle;
-import android.os.IBinder;
+import android.os.*;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import com.example.myapplication.ui.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -21,18 +22,40 @@ public class MainActivity extends AppCompatActivity {
 
 //    private ActivityMainBinding binding;
     private TextView textView;
+    private TextView tvOut;
     private EditText etData;
+    private MyService.Binder binder;
 
     private ServiceConnection conn = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             System.out.println("service connected =====");
+            binder = (MyService.Binder) service;
+            binder.getService().setCallback(new MyService.Callback() {
+                @Override
+                public void onDataChange(String data) {
+                   Message msg = new Message();
+                   Bundle b = new Bundle();
+                   b.putString("data",data);
+                   msg.setData(b);
+                   handler1.sendMessage(msg);
+                }
+            });
         }
 
         @Override
         public void onServiceDisconnected(ComponentName name) {
             System.out.println("service no connected =====");
         }
+
+
+        private Handler handler1 = new Handler(Looper.myLooper()){
+            @Override
+            public void handleMessage(@NonNull Message msg) {
+                super.handleMessage(msg);
+                tvOut.setText(msg.getData().getString("data"));
+            }
+        };
     };
 
     @Override
@@ -41,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         textView = findViewById(R.id.textView1);
+
+        tvOut = findViewById(R.id.tvOut);
 
         etData = findViewById(R.id.etData);
 
@@ -100,6 +125,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                unbindService(conn);
+            }
+        });
+
+        findViewById(R.id.buttonSyncData).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(binder != null){
+                    binder.setData(etData.getText().toString());
+                }
             }
         });
 
