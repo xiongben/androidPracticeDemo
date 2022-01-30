@@ -96,6 +96,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.buttonStartMyWebAty).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    startActivity(new Intent("com.example.myapplication.intent.action.MyWebAty"));
+                }catch (ActivityNotFoundException a) {
+                    a.getMessage();
+                }
+            }
+        });
+
         //server启动
         findViewById(R.id.buttonStartServers).setOnClickListener(new View.OnClickListener() {
             @Override

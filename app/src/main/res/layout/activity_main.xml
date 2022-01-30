@@ -14,6 +14,10 @@
             android:text="start myAty"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/buttonStartMyAty"/>
+ <Button
+         android:text="start my web activity"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content" android:id="@+id/buttonStartMyWebAty"/>
     <EditText android:layout_width="match_parent" android:layout_height="wrap_content" android:text="默认信息" android:id="@+id/etData"/>
     <Button
             android:text="启动服务"
