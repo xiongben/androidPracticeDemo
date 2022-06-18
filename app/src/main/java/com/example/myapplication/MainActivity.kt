@@ -1,5 +1,7 @@
 package com.example.myapplication
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -14,7 +16,20 @@ class MainActivity : AppCompatActivity() {
 
         val button1: Button = findViewById(R.id.button1)
         button1.setOnClickListener{
-            Toast.makeText(this, "you click button1", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "you click button1", Toast.LENGTH_SHORT).show()
+
+//            // 显式intend
+//            val intent = Intent(this, SecondActivity::class.java)
+//            startActivity(intent)
+
+//            // 隐式intend
+//            val intent = Intent("com.example.myapplication.ACTION_START")
+//            intent.addCategory("com.example.myapplication.MY_CATEGORY")
+//            startActivity(intent)
+
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse("https://www.baidu.com")
+            startActivity(intent)
         }
     }
 
