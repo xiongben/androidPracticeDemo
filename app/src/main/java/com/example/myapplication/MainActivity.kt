@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         val button1: Button = findViewById(R.id.button1)
+        val button2: Button = findViewById(R.id.button2)
         button1.setOnClickListener{
 //            Toast.makeText(this, "you click button1", Toast.LENGTH_SHORT).show()
 
@@ -31,6 +32,11 @@ class MainActivity : AppCompatActivity() {
 //            val intent = Intent(Intent.ACTION_VIEW)
 //            intent.data = Uri.parse("https://www.baidu.com")
 //            startActivity(intent)
+        }
+
+        button2.setOnClickListener {
+            val intent = Intent(this, ListViewTest::class.java)
+            startActivity(intent)
         }
     }
 
