@@ -22,3 +22,6 @@ class SecondActivity: BaseActivity() {
 
 ```
 ### 6, 标准函数with, run, apply
+### 7, 使用lateinit进行延迟初始化
+### 8， 使用sealed 密封类优化代码
+
