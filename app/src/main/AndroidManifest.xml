@@ -9,9 +9,11 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.MyApplication">
+        <activity android:name=".RecyclerView" android:exported="true">
+        </activity>
         <activity
-                android:exported="true"
-                android:name=".ListViewTest">
+                android:name=".ListViewTest"
+                android:exported="true">
         </activity>
         <activity
                 android:name=".SecondActivity"

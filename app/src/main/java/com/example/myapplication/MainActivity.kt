@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         button2.setOnClickListener {
-            val intent = Intent(this, ListViewTest::class.java)
+            val intent = Intent(this, RecyclerView::class.java)
             startActivity(intent)
         }
     }

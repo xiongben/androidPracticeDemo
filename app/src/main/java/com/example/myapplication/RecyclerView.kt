@@ -3,23 +3,24 @@ package com.example.myapplication
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ListView
-import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.listviewtest.Fruit
+import androidx.recyclerview.widget.RecyclerView
 
-class ListViewTest : AppCompatActivity() {
+class RecyclerView : AppCompatActivity() {
+
     private val fruitList = ArrayList<Fruit>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_list_view_test)
+        setContentView(R.layout.activity_recycler_view)
         initFruits()
-        val listView: ListView = findViewById(R.id.listView)
-        val adapter = FruitAdapter(this, R.layout.fruit_item, fruitList)
-        listView.adapter = adapter
-        listView.setOnItemClickListener { _, _, position, _ ->
-            val fruit = fruitList[position]
-            Toast.makeText(this, fruit.name, Toast.LENGTH_SHORT).show()
-        }
+        val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
+        val layoutManager = LinearLayoutManager(this)
+        recyclerView.layoutManager = layoutManager
+        val adapter = FruitAdapterNew(fruitList)
+        recyclerView.adapter = adapter
+
     }
 
     private fun initFruits() {
