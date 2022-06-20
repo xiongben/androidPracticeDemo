@@ -24,4 +24,32 @@ class SecondActivity: BaseActivity() {
 ### 6, 标准函数with, run, apply
 ### 7, 使用lateinit进行延迟初始化
 ### 8， 使用sealed 密封类优化代码
+### 9， 布局限定符的使用
+### 10， 高阶函数和内联函数
+```kotlin
+fun num1AndNum2(num1: Int, num2: Int, operation: (Int, Int) -> Int): Int {
+    return operation(num1, num2)
+}
+
+fun plus(num1: Int, num2: Int) : Int {
+    return num1 + num2
+}
+
+fun minus(num1: Int, num2: Int) : Int {
+    return num1 - num2
+}
+
+fun StringBuilder.build(block: StringBuilder.() -> Unit) : StringBuilder {
+    block()
+    return this
+}
+
+
+val res1 = num1AndNum2(num1, num2, ::plus)
+val res2 = num1AndNum2(num1, num2, ::minus)
+val res3 = num1AndNum2(num1, num2) {n1, n2 ->
+    n1 + n2
+}
+
+```
 
