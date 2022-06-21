@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +11,10 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import java.io.BufferedWriter
+import java.io.IOException
+import java.io.OutputStream
+import java.io.OutputStreamWriter
 
 class SecondActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,6 +26,7 @@ class SecondActivity : AppCompatActivity(), View.OnClickListener {
         val button3: Button = findViewById(R.id.button3)
         button2.setOnClickListener(this)
         button3.setOnClickListener(this)
+        save()
     }
 
     override fun onClick(v: View?) {
@@ -44,6 +50,18 @@ class SecondActivity : AppCompatActivity(), View.OnClickListener {
                    show()
                }
             }
+        }
+    }
+
+    private fun save() {
+        try {
+            val output = openFileOutput("data", Context.MODE_PRIVATE)
+            val writer = BufferedWriter(OutputStreamWriter(output))
+            writer.use {
+                it.write("this is san niu test document")
+            }
+        } catch (e: IOException) {
+            e.printStackTrace()
         }
     }
 }
