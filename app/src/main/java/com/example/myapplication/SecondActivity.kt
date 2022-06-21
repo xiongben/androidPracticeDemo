@@ -1,5 +1,7 @@
 package com.example.myapplication
 
+import android.content.Intent
+import android.content.IntentFilter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -28,6 +30,9 @@ class SecondActivity : AppCompatActivity(), View.OnClickListener {
                 val editText: EditText = findViewById(R.id.editText)
                 val inputText = editText.text.toString()
                 Toast.makeText(this, inputText, Toast.LENGTH_SHORT).show()
+                val intent = Intent("com.example.myapplication.MY_BROADCAST")
+                intent.setPackage(packageName)
+                sendBroadcast(intent)
             }
             R.id.button3 -> {
                AlertDialog.Builder(this).apply {
