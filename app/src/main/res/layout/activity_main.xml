@@ -27,7 +27,7 @@
     <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="30dp"
+            android:layout_margin="10dp"
             android:id="@+id/button1"
             android:textAllCaps="false"
             android:text="button test 1"/>
@@ -35,9 +35,33 @@
     <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="30dp"
+            android:layout_margin="10dp"
             android:id="@+id/button2"
             android:textAllCaps="false"
             android:text="list page"/>
+
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:id="@+id/button3"
+            android:textAllCaps="false"
+            android:text="sql"/>
+
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:id="@+id/button4"
+            android:textAllCaps="false"
+            android:text="sql add data"/>
+
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:id="@+id/button5"
+            android:textAllCaps="false"
+            android:text="sql update data"/>
 
 </LinearLayout>

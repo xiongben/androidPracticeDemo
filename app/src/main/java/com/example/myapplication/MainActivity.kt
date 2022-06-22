@@ -1,9 +1,6 @@
 package com.example.myapplication
 
-import android.content.BroadcastReceiver
-import android.content.Context
-import android.content.Intent
-import android.content.IntentFilter
+import android.content.*
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -23,6 +20,10 @@ class MainActivity : AppCompatActivity() {
 
         val button1: Button = findViewById(R.id.button1)
         val button2: Button = findViewById(R.id.button2)
+        val button3: Button = findViewById(R.id.button3)
+        val button4: Button = findViewById(R.id.button4)
+        val button5: Button = findViewById(R.id.button5)
+        val dbHelper = MyDatabaseHelper(this, "BookStore.db", 2)
         button1.setOnClickListener{
 //            Toast.makeText(this, "you click button1", Toast.LENGTH_SHORT).show()
 
@@ -44,6 +45,38 @@ class MainActivity : AppCompatActivity() {
 //            val intent = Intent(this, RecyclerView::class.java)
             val intent = Intent(this, FragmentDemo::class.java)
             startActivity(intent)
+        }
+
+        button3.setOnClickListener {
+            dbHelper.writableDatabase
+        }
+
+        button4.setOnClickListener {
+            val db = dbHelper.writableDatabase
+            val values1 = ContentValues().apply {
+                // 开始组装第一条数据
+                put("name", "The Da Vinci Code")
+                put("author", "Dan Brown")
+                put("pages", 454)
+                put("price", 16.96)
+            }
+            db.insert("Book", null, values1) // 插入第一条数据
+            val values2 = ContentValues().apply {
+                // 开始组装第二条数据
+                put("name", "The Lost Symbol")
+                put("author", "Dan Brown")
+                put("pages", 510)
+                put("price", 19.95)
+            }
+            db.insert("Book", null, values2) // 插入第二条数据
+        }
+
+        button5.setOnClickListener {
+            val db = dbHelper.writableDatabase
+            val values = ContentValues()
+            values.put("price", 10.99)
+            val rows = db.update("Book", values, "name = ?", arrayOf("The Da Vinci Code"))
+            Toast.makeText(this, "rows is $rows", Toast.LENGTH_SHORT).show()
         }
 
         // 广播
