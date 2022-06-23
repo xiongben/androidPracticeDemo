@@ -4,6 +4,7 @@ import android.Manifest
 import android.app.Activity
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
@@ -49,11 +50,15 @@ class SecondActivity : AppCompatActivity(), View.OnClickListener {
         save()
 
         button4.setOnClickListener {
+            val intent = Intent(this, ListViewTest::class.java)
+            val pi = PendingIntent.getActivity(this, 0, intent, 0)
             val notification = NotificationCompat.Builder(this, "normal")
                 .setContentTitle("this is content title")
-                .setContentText("this is content text")
+                .setContentText("Learn how to build notifications, send and sync data, and use voice actions. Get the official Android IDE and developer tools to build apps for Android.")
                 .setSmallIcon(R.drawable.small_icon)
                 .setLargeIcon(BitmapFactory.decodeResource(resources, R.drawable.large_icon))
+                .setContentIntent(pi)
+                .setAutoCancel(true)
                 .build()
             manager.notify(1, notification)
         }
