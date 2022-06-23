@@ -14,6 +14,7 @@ import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.widget.Button
@@ -23,10 +24,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
-import java.io.BufferedWriter
-import java.io.IOException
-import java.io.OutputStream
-import java.io.OutputStreamWriter
+import androidx.core.content.FileProvider
+import java.io.*
 
 
 class SecondActivity : AppCompatActivity(), View.OnClickListener {
@@ -41,14 +40,23 @@ class SecondActivity : AppCompatActivity(), View.OnClickListener {
             manager.createNotificationChannel(channel)
         }
 
+        // 拍照
+        val takePhoto = 1
+        lateinit var imageUri: Uri
+        lateinit var outputImage: File
+
+
 //        val editText: EditText = findViewById(R.id.editText)
         val button2: Button = findViewById(R.id.button2)
         val button3: Button = findViewById(R.id.button3)
         val button4: Button = findViewById(R.id.button4)
+        val button5: Button = findViewById(R.id.button5)
+
         button2.setOnClickListener(this)
         button3.setOnClickListener(this)
         save()
 
+        // 发送顶部消息通知
         button4.setOnClickListener {
             val intent = Intent(this, ListViewTest::class.java)
             val pi = PendingIntent.getActivity(this, 0, intent, 0)
@@ -61,6 +69,24 @@ class SecondActivity : AppCompatActivity(), View.OnClickListener {
                 .setAutoCancel(true)
                 .build()
             manager.notify(1, notification)
+        }
+
+        // 拍照按钮
+        button5.setOnClickListener {
+            outputImage = File(externalCacheDir, "output_image.jpg")
+            if (outputImage.exists()) {
+                outputImage.delete()
+            }
+            outputImage.createNewFile()
+            imageUri = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                FileProvider.getUriForFile(this, "com.example.cameraalbumtest.fileprovider", outputImage);
+            } else {
+                Uri.fromFile(outputImage);
+            }
+            // 启动相机程序
+            val intent = Intent("android.media.action.IMAGE_CAPTURE")
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri)
+            startActivityForResult(intent, takePhoto)
         }
     }
 

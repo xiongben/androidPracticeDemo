@@ -48,4 +48,18 @@
             android:layout_height="wrap_content"
             android:id="@+id/button4"
             android:text="notification btn"/>
+
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:id="@+id/button5"
+            android:text="take photo"/>
+
+    <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"/>
+
 </LinearLayout>
