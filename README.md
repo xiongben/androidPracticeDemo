@@ -53,3 +53,29 @@ val res3 = num1AndNum2(num1, num2) {n1, n2 ->
 
 ```
 
+### 11， vararg关键字对应java中的可变参数列表，允许传入0个，1个，2个，，，，，
+### 12， by lazy 代码块懒加载
+### 13， 类委托和委托属性
+```kotlin
+class MySet<T>(val helperSet: HashSet<T>): Set<T> by helperSet {
+    override fun isEmpty(): Boolean {
+        return false
+    }
+}
+
+class MyClass {
+    var p by Delegate()
+}
+
+class Delegate {
+    var propValue: Any? = null
+
+    operator fun getValue(myClass: MyClass, prop: KProperty<*>): Any? {
+        return propValue
+    }
+
+    operator fun setValue(myClass: MyClass, prop: KProperty<*>, value: Any?) {
+        propValue = value
+    }
+}
+```

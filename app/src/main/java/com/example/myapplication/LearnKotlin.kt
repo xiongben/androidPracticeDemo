@@ -2,6 +2,7 @@ package com.example.myapplication
 
 import java.lang.StringBuilder
 import kotlin.math.max
+import kotlin.reflect.KProperty
 
 fun main() {
     val a = 37
@@ -74,3 +75,82 @@ fun StringBuilder.build(block: StringBuilder.() -> Unit) : StringBuilder {
     block()
     return this
 }
+
+// 泛型
+class MyClass2 {
+    fun <T: Number> method(param: T):T {
+        return param
+    }
+}
+
+class MySet<T>(val helperSet: HashSet<T>): Set<T> by helperSet {
+    override fun isEmpty(): Boolean {
+        return false
+    }
+}
+
+class MyClass {
+    var p by Delegate()
+}
+
+class Delegate {
+    var propValue: Any? = null
+
+    operator fun getValue(myClass: MyClass, prop: KProperty<*>): Any? {
+        return propValue
+    }
+
+    operator fun setValue(myClass: MyClass, prop: KProperty<*>, value: Any?) {
+        propValue = value
+    }
+}
+
+class Later<T>(val block:() -> T) {
+    var value: Any? = null
+
+    operator fun getValue(any: Any?, prop: KProperty<*>): T {
+        if(value == null) {
+            value = block()
+        }
+        return value as T
+    }
+}
+
+fun <T> later(block: () -> T) = Later(block)
+
+val uriMatcher by later {
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
