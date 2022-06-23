@@ -2,11 +2,15 @@ package com.example.myapplication
 
 import android.Manifest
 import android.app.Activity
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.PackageManager
+import android.graphics.BitmapFactory
 import android.net.Uri
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -16,6 +20,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
+import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import java.io.BufferedWriter
 import java.io.IOException
@@ -28,12 +33,30 @@ class SecondActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.second_activity)
 
+        // Notification demo
+        val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel = NotificationChannel("normal", "Normal", NotificationManager.IMPORTANCE_DEFAULT)
+            manager.createNotificationChannel(channel)
+        }
+
 //        val editText: EditText = findViewById(R.id.editText)
         val button2: Button = findViewById(R.id.button2)
         val button3: Button = findViewById(R.id.button3)
+        val button4: Button = findViewById(R.id.button4)
         button2.setOnClickListener(this)
         button3.setOnClickListener(this)
         save()
+
+        button4.setOnClickListener {
+            val notification = NotificationCompat.Builder(this, "normal")
+                .setContentTitle("this is content title")
+                .setContentText("this is content text")
+                .setSmallIcon(R.drawable.small_icon)
+                .setLargeIcon(BitmapFactory.decodeResource(resources, R.drawable.large_icon))
+                .build()
+            manager.notify(1, notification)
+        }
     }
 
     override fun onClick(v: View?) {
