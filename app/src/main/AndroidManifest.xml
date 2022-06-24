@@ -3,6 +3,7 @@
           package="com.example.myapplication">
 
     <uses-permission android:name="android.permission.CALL_PHONE"/>
+
     <application
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
@@ -10,6 +11,17 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.MyApplication">
+        <service
+                android:name=".MyService"
+                android:enabled="true"
+                android:exported="true">
+        </service>
+
+        <activity
+                android:name=".ServiceDemo"
+                android:exported="true">
+        </activity>
+
         <provider
                 android:name="androidx.core.content.FileProvider"
                 android:authorities="com.example.cameraalbumtest.fileprovider"
@@ -17,9 +29,12 @@
                 android:grantUriPermissions="true">
             <meta-data
                     android:name="android.support.FILE_PROVIDER_PATHS"
-                    android:resource="@xml/file_paths" />
+                    android:resource="@xml/file_paths"/>
         </provider>
-        <activity android:name=".FragmentDemo" android:exported="true">
+
+        <activity
+                android:name=".FragmentDemo"
+                android:exported="true">
         </activity>
         <activity
                 android:name=".RecyclerView"
@@ -48,11 +63,11 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
         <receiver
                 android:name=".MyBroadcastReceiver"
                 android:enabled="true"
-                android:exported="true"
-        >
+                android:exported="true">
             <intent-filter>
                 <action android:name="com.example.myapplication.MY_BROADCAST"/>
             </intent-filter>

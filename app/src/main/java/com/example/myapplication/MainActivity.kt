@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
         val button3: Button = findViewById(R.id.button3)
         val button4: Button = findViewById(R.id.button4)
         val button5: Button = findViewById(R.id.button5)
+        val button6: Button = findViewById(R.id.button6)
         val dbHelper = MyDatabaseHelper(this, "BookStore.db", 2)
         button1.setOnClickListener{
 //            Toast.makeText(this, "you click button1", Toast.LENGTH_SHORT).show()
@@ -84,6 +85,11 @@ class MainActivity : AppCompatActivity() {
 //        intentFilter.addAction("android.intent.action.TIME_TICK")
 //        timeChangeReceiver = TimeChangeReceiver()
 //        registerReceiver(timeChangeReceiver, intentFilter)
+
+        button6.setOnClickListener {
+            val intent = Intent(this, ServiceDemo::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onDestroy() {
