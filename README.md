@@ -79,3 +79,11 @@ class Delegate {
     }
 }
 ```
+### 14， infix构建可读性函数
+```kotlin
+val list2 = listOf<String>("apple", "banana")
+infix fun <T> Collection<T>.has(element: T) = contains(element)
+if (list2 has "apple") {
+    println("list have apple")
+}
+```

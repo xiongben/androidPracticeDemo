@@ -40,6 +40,13 @@ fun main() {
         append("Ate all fruits.\n")
     }
     println(res4)
+
+    // infix语法
+    val list2 = listOf<String>("apple", "banana")
+    infix fun <T> Collection<T>.has(element: T) = contains(element)
+    if (list2 has "apple") {
+       println("list have apple")
+    }
 }
 
 fun largerNumber(num1: Int, num2: Int): Int {
@@ -121,6 +128,7 @@ fun <T> later(block: () -> T) = Later(block)
 val uriMatcher by later {
 
 }
+
 
 
 
