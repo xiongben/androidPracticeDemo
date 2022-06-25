@@ -20,34 +20,43 @@ fun main() {
 //        println(fruit)
 //    }
 
-    val num1 = 100
-    val num2 = 70
-    val res1 = num1AndNum2(num1, num2, ::plus)
-    val res2 = num1AndNum2(num1, num2, ::minus)
-    val res3 = num1AndNum2(num1, num2) {n1, n2 ->
-        n1 + n2
-    }
+//    val num1 = 100
+//    val num2 = 70
+//    val res1 = num1AndNum2(num1, num2, ::plus)
+//    val res2 = num1AndNum2(num1, num2, ::minus)
+//    val res3 = num1AndNum2(num1, num2) {n1, n2 ->
+//        n1 + n2
+//    }
+//    println(res1)
+//    println(res2)
+//    println(res3)
+
+//    val list = listOf<String>("apple","orange","banana")
+//    val res4 = StringBuilder().build {
+//        append("start eating fruit.\n")
+//        for (fruit in list) {
+//            append(fruit).append("\n")
+//        }
+//        append("Ate all fruits.\n")
+//    }
+//    println(res4)
+//
+//    // infix语法
+//    val list2 = listOf<String>("apple", "banana")
+//    infix fun <T> Collection<T>.has(element: T) = contains(element)
+//    if (list2 has "apple") {
+//       println("list have apple")
+//    }
+
+    val res1 = getGenericType<String>()
+    val res2 = getGenericType<Int>()
     println(res1)
     println(res2)
-    println(res3)
 
-    val list = listOf<String>("apple","orange","banana")
-    val res4 = StringBuilder().build {
-        append("start eating fruit.\n")
-        for (fruit in list) {
-            append(fruit).append("\n")
-        }
-        append("Ate all fruits.\n")
-    }
-    println(res4)
 
-    // infix语法
-    val list2 = listOf<String>("apple", "banana")
-    infix fun <T> Collection<T>.has(element: T) = contains(element)
-    if (list2 has "apple") {
-       println("list have apple")
-    }
 }
+
+inline fun <reified T> getGenericType() = T::class.java
 
 fun largerNumber(num1: Int, num2: Int): Int {
     return max(num1, num2)
@@ -131,10 +140,16 @@ val uriMatcher by later {
 
 
 
+class SimpleData<out T>(val data: T?) {
+    fun get(): T? {
+        return data
+    }
+}
 
 
-
-
+interface TransFormer<in T> {
+    fun transform(t: T): String
+}
 
 
 

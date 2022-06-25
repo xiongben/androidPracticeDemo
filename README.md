@@ -87,3 +87,23 @@ if (list2 has "apple") {
     println("list have apple")
 }
 ```
+### 15， 内联函数的泛型实化
+```kotlin
+inline fun <reified T> getGenericType() = T::class.java
+
+val res1 = getGenericType<String>()
+```
+### 16，  泛型的协变
+```kotlin
+class SimpleData<out T>(val data: T?) {
+    fun get(): T? {
+        return data
+    }
+}
+```
+### 16，  泛型的逆变
+```kotlin
+interface TransFormer<in T> {
+    fun transform(t: T): String
+}
+```
