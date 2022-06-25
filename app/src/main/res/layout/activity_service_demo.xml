@@ -36,6 +36,20 @@
             android:textAllCaps="false"
             android:text="stop Service"/>
 
+    <Button
+            android:id="@+id/bindServiceBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="bind Service"/>
+
+    <Button
+            android:id="@+id/unbindServiceBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="unbind Service"/>
+
 
 
 </LinearLayout>
