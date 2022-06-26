@@ -93,7 +93,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         button7.setOnClickListener {
-            val intent = Intent(this, HttpDemoActivity::class.java)
+            val intent = Intent(this, UiDemoActivity::class.java)
             startActivity(intent)
         }
     }
