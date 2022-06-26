@@ -59,4 +59,12 @@
             android:textAllCaps="false"
             android:text="service activity"/>
 
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:id="@+id/button7"
+            android:textAllCaps="false"
+            android:text="http demo activity"/>
+
 </LinearLayout>
