@@ -8,7 +8,9 @@ import android.os.*
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlin.concurrent.thread
 
 
@@ -51,6 +53,7 @@ class ServiceDemo : AppCompatActivity() {
         val stopServiceBtn: Button = findViewById(R.id.stopServiceBtn)
         val bindServiceBtn: Button = findViewById(R.id.bindServiceBtn)
         val unbindServiceBtn: Button = findViewById(R.id.unbindServiceBtn)
+        val fab: FloatingActionButton = findViewById(R.id.fab)
 
 
         changeTextBtn.setOnClickListener {
@@ -77,6 +80,10 @@ class ServiceDemo : AppCompatActivity() {
         }
         unbindServiceBtn.setOnClickListener {
             unbindService(connection) // 解绑Service
+        }
+
+        fab.setOnClickListener {
+            Toast.makeText(this, "fab click", Toast.LENGTH_SHORT).show()
         }
     }
 }
