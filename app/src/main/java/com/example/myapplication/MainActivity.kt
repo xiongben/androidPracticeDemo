@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
         val button5: Button = findViewById(R.id.button5)
         val button6: Button = findViewById(R.id.button6)
         val button7: Button = findViewById(R.id.button7)
+        val button8: Button = findViewById(R.id.button8)
         val dbHelper = MyDatabaseHelper(this, "BookStore.db", 2)
         button1.setOnClickListener{
 //            Toast.makeText(this, "you click button1", Toast.LENGTH_SHORT).show()
@@ -94,6 +95,11 @@ class MainActivity : AppCompatActivity() {
 
         button7.setOnClickListener {
             val intent = Intent(this, UiDemoActivity::class.java)
+            startActivity(intent)
+        }
+
+        button8.setOnClickListener {
+            val intent = Intent(this, CardDemoActivity::class.java)
             startActivity(intent)
         }
     }
