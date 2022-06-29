@@ -75,4 +75,12 @@
             android:textAllCaps="false"
             android:text="card activity demo"/>
 
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:id="@+id/button9"
+            android:textAllCaps="false"
+            android:text="jetpack demo"/>
+
 </LinearLayout>

@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import java.lang.RuntimeException
 import java.lang.StringBuilder
 import kotlin.math.max
 import kotlin.reflect.KProperty
@@ -153,7 +154,16 @@ interface TransFormer<in T> {
 
 
 
-
+fun <T : Comparable<T>> max(vararg nums: T): T {
+    if(nums.isEmpty()) throw RuntimeException("params can not be empty")
+    var maxNum = nums[0]
+    for(num in nums) {
+        if (num > maxNum) {
+            maxNum = num
+        }
+    }
+    return maxNum
+}
 
 
 

@@ -13,10 +13,12 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.MyApplication">
+        <activity android:name=".JetpackDemoActivity" android:exported="true">
+        </activity>
         <activity
                 android:name=".FruitDetailAvtivity"
-                android:theme="@style/FruitActivityTheme"
-                android:exported="true">
+                android:exported="true"
+                android:theme="@style/FruitActivityTheme">
         </activity>
         <activity
                 android:name=".CardDemoActivity"
