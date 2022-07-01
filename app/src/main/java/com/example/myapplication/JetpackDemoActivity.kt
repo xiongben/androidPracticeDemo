@@ -10,6 +10,9 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.core.content.edit
 import androidx.lifecycle.*
+import androidx.work.OneTimeWorkRequest
+import androidx.work.WorkManager
+import java.util.concurrent.TimeUnit
 
 
 class MyObserver : LifecycleObserver {
@@ -87,6 +90,7 @@ class JetpackDemoActivity : AppCompatActivity() {
         val plusOneBtn: Button = findViewById(R.id.plusOneBtn)
         val clearBtn: Button = findViewById(R.id.clearBtn)
         val getUserBtn: Button = findViewById(R.id.getUserBtn)
+        val doWorkBtn: Button = findViewById(R.id.doWorkBtn)
 
         sp = getPreferences(Context.MODE_PRIVATE)
         val countReserved = sp.getInt("count_reserved", 0)
@@ -101,6 +105,14 @@ class JetpackDemoActivity : AppCompatActivity() {
         getUserBtn.setOnClickListener {
             val userId = (0..1000).random().toString()
             viewModel.getUser(userId)
+        }
+
+        doWorkBtn.setOnClickListener {
+            val request = OneTimeWorkRequest.Builder(SimpleWorker::class.java)
+                .setInitialDelay(5, TimeUnit.MINUTES)
+                .addTag("simple")
+                .build()
+            WorkManager.getInstance(this).enqueue(request)
         }
 
         viewModel.counter.observe(this, Observer { count ->
