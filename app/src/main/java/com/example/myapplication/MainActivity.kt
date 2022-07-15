@@ -8,6 +8,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.Toast
+import com.example.myapplication.weather.WeatherMainActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,6 +17,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
         supportActionBar?.hide()
 
         val button1: Button = findViewById(R.id.button1)
@@ -32,7 +35,7 @@ class MainActivity : AppCompatActivity() {
 //            Toast.makeText(this, "you click button1", Toast.LENGTH_SHORT).show()
 
             // 显式intend
-            val intent = Intent(this, SecondActivity::class.java)
+            val intent = Intent(this, WeatherMainActivity::class.java)
             startActivity(intent)
 
 //            // 隐式intend
